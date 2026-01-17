@@ -1,0 +1,4 @@
+Appending some text to example.txt
+Rahul
+is 
+my name
