@@ -1,16 +1,16 @@
 # 💡 Golden Rules for These Answers
 
-1.  **Structure is King (STAR Method)**: Always use **Situation, Task, Action, Result**. It prevents rambling.
-2.  **Measurable Impact**: Don’t say *"It was faster."* Say *"It reduced latency by 40%."* Data adds credibility.
-3.  **Balance "I" vs "We"**:
-    *   Use **"We"** for team wins and culture.
-    *   Use **"I"** for specific technical contributions and leadership actions.
-4.  **Connect to Business Value**: Engineering isn't just about code; it's about solving business problems (e.g., revenue, retention, efficiency).
-5.  **Be Authentic**: If you failed, admit it fast, then focus on the **Learning** and **Systemic Fix**.
+1. **Structure is King (STAR Method)**: Always use **Situation, Task, Action, Result**. It prevents rambling.
+2. **Measurable Impact**: Don’t say *"It was faster."* Say *"It reduced latency by 40%."* Data adds credibility.
+3. **Balance "I" vs "We"**:
+   * Use **"We"** for team wins and culture.
+   * Use **"I"** for specific technical contributions and leadership actions.
+4. **Connect to Business Value**: Engineering isn't just about code; it's about solving business problems (e.g., revenue, retention, efficiency).
+5. **Be Authentic**: If you failed, admit it fast, then focus on the **Learning** and **Systemic Fix**.
 
 ---
 
-## Why do want to work here ?
+## Why do want to work here ? 
 
 # What are your Strengths & Weaknesses?
 
@@ -310,14 +310,16 @@ Early in my role as a Senior Engineer, I caused a **15-minute production partial
 I underestimated the size of the table and ran the migration logic directly without using the `CONCURRENTLY` keyword (in Postgres). This caused a **table lock**, queuing up all login requests and eventually timing them out.
 
 **How I Handled It (Immediate Action):**
-1.  **Alerting**: Monitor alarms fired immediately.
-2.  **Rollback**: I realized the lock issue and immediately killed the migration process to release the lock, restoring service within minutes.
-3.  **Communication**: I posted an incident update to the stakeholders acknowledging the error and confirming service restoration.
+
+1. **Alerting**: Monitor alarms fired immediately.
+2. **Rollback**: I realized the lock issue and immediately killed the migration process to release the lock, restoring service within minutes.
+3. **Communication**: I posted an incident update to the stakeholders acknowledging the error and confirming service restoration.
 
 **The Lesson (Long-term Fix):**
 I didn't just "be more careful" next time. I implemented systemic fixes:
-1.  **Process Change**: We updated our CI/CD pipeline to automatically flag failing migrations that touch large tables.
-2.  **Knowledge Sharing**: I wrote a "Zero Downtime Migration Guide" for the team to ensure no one else made the same mistake.
+
+1. **Process Change**: We updated our CI/CD pipeline to automatically flag failing migrations that touch large tables.
+2. **Knowledge Sharing**: I wrote a "Zero Downtime Migration Guide" for the team to ensure no one else made the same mistake.
 
 This failure taught me that **resilience isn't about avoiding failure, but about how quickly you recover and learn from it**.
 
@@ -326,10 +328,11 @@ This failure taught me that **resilience isn't about avoiding failure, but about
 When the team is under pressure (e.g., tight deadlines, layoffs, or post-incident stress), I rely on **Transparency, Empathy, and Focus**.
 
 ### My Approach:
-1.  **Be Honest & Transparent**: Engineers are smart; they know when things are tough. Instead of sugarcoating, I explain the *reality* of the situation but pair it with a clear *plan*. Knowing the "Why" and the "Way Out" reduces anxiety.
-2.  **Protect Their Focus**: During a crunch, I act as a shield. I push back on non-essential meetings and external requests so the team can focus on the critical path without distractions.
-3.  **Celebrate Small Wins**: In a long slog, morale can dip. I make sure to celebrate every milestone—whether it's fixing a tricky bug or completing a module. Recognizing progress keeps momentum high.
-4.  **Get in the Trenches**: I show solidarity by staying late with them if needed, ordering food, or taking on the grunt work (like documentation or testing) so they can focus on the complex coding.
+
+1. **Be Honest & Transparent**: Engineers are smart; they know when things are tough. Instead of sugarcoating, I explain the *reality* of the situation but pair it with a clear *plan*. Knowing the "Why" and the "Way Out" reduces anxiety.
+2. **Protect Their Focus**: During a crunch, I act as a shield. I push back on non-essential meetings and external requests so the team can focus on the critical path without distractions.
+3. **Celebrate Small Wins**: In a long slog, morale can dip. I make sure to celebrate every milestone—whether it's fixing a tricky bug or completing a module. Recognizing progress keeps momentum high.
+4. **Get in the Trenches**: I show solidarity by staying late with them if needed, ordering food, or taking on the grunt work (like documentation or testing) so they can focus on the complex coding.
 
 My goal is to show them that **we are in this together**, and we will get through it as a team.
 
@@ -347,8 +350,9 @@ By stepping up, I put my reputation on the line. If I failed to turn it around, 
 I analyzed the project and realized the problem wasn't the *engineering talent*—it was the *process*. The team was paralyzed by changing requirements. I saw a clear path to fix it.
 
 **Action:**
-1.  **Scope Freeze**: I immediately negotiated a hard "feature freeze" with Product Management, cutting 30% of the "nice-to-have" features to focus solely on the MVP.
-2.  **Re-alignment**: I switched the team from 2-week sprints to 1-week "stability sprints" to build momentum with quick wins.
+
+1. **Scope Freeze**: I immediately negotiated a hard "feature freeze" with Product Management, cutting 30% of the "nice-to-have" features to focus solely on the MVP.
+2. **Re-alignment**: I switched the team from 2-week sprints to 1-week "stability sprints" to build momentum with quick wins.
 
 **The Outcome:**
 We delivered the MVP on the *revised* timeline with zero critical bugs. The successful turnaround not only saved the project but also earned me a **promotion to Senior Engineer** and the trust of executive leadership. It taught me that **calculated risks, backed by a solid plan, are the fastest way to grow**.
@@ -358,10 +362,11 @@ We delivered the MVP on the *revised* timeline with zero critical bugs. The succ
 When faced with multiple competing deadlines, I rely on the **Eisenhower Matrix** (Urgent vs. Important) and **transparent negotiation**. I know I can't do everything at once, so I focus on doing the *right* things first.
 
 ### My Strategy:
-1.  **Map Dependencies**: I list all tasks and identify which ones are blocking others. A task that blocks 3 other developers gets priority over a standalone feature.
-2.  **Negotiate Scope/Timeline**: If two Project Managers want something "Now", I bring them together (or talk to my lead) and say: *"I can deliver Project A by Friday or Project B by Monday. Which one aligns better with business goals?"* This forces a decision based on value, not pressure.
-3.  **Delegate**: If appropriate, I see if any "nice-to-have" or repetitive tasks can be delegated to junior members, giving them a learning opportunity while freeing me up for the critical path.
-4.  **Time Blocking**: I block dedicated chunks of time for each project to avoid the cognitive load of constant context switching.
+
+1. **Map Dependencies**: I list all tasks and identify which ones are blocking others. A task that blocks 3 other developers gets priority over a standalone feature.
+2. **Negotiate Scope/Timeline**: If two Project Managers want something "Now", I bring them together (or talk to my lead) and say: *"I can deliver Project A by Friday or Project B by Monday. Which one aligns better with business goals?"* This forces a decision based on value, not pressure.
+3. **Delegate**: If appropriate, I see if any "nice-to-have" or repetitive tasks can be delegated to junior members, giving them a learning opportunity while freeing me up for the critical path.
+4. **Time Blocking**: I block dedicated chunks of time for each project to avoid the cognitive load of constant context switching.
 
 Prioritization is key—I’d rather deliver **one high-quality feature on time** than two half-baked ones late.
 
@@ -374,9 +379,10 @@ A key client (a large retailer) was using our reporting API heavily. They reques
 While implementing the change, I realized that querying 1 year of data would take ~45 seconds, which would likely time out their other integrations. I could have just delivered what they asked for (the parameter change), but I knew it would lead to a bad experience.
 
 **My Action:**
-1.  **I proposed an enhancement**: Instead of a synchronous API call, I built an **Asynchronous Job System** for large reports.
-2.  **Implementation**: When they requested a large report, the API returned a `Job ID` immediately. A background worker processed the data and emailed them a secure download link when ready.
-3.  **UI Polish**: I even added a progress bar to the dashboard so they could track the status.
+
+1. **I proposed an enhancement**: Instead of a synchronous API call, I built an **Asynchronous Job System** for large reports.
+2. **Implementation**: When they requested a large report, the API returned a `Job ID` immediately. A background worker processed the data and emailed them a secure download link when ready.
+3. **UI Polish**: I even added a progress bar to the dashboard so they could track the status.
 
 **The Outcome:**
 The client was thrilled because the system didn't hang, and they could continue working while the report generated. They even sent a personal note to our VP of Engineering praising the "snappy and thoughtful" solution. I went beyond the requirement (a parameter change) to deliver **value and usability**.
@@ -386,11 +392,13 @@ The client was thrilled because the system didn't hang, and they could continue 
 I view disagreements with managers as a healthy part of the engineering process, provided they are respectful and focused on **solving the problem**. My goal is to maximize business value, not to win an argument.
 
 ### My Approach:
-1.  **Seek to Understand**: I first ask clarifying questions to understand their perspective. Often, managers see constraints (budget, timeline, business urgency) that I might not be aware of as an engineer.
-2.  **Provide Data, Not Opinon**: instead of saying *"I don't like this approach,"* I say *"Using solution A increases our cloud costs by 20% compared to B. Is that trade-off acceptable for the speed gain?"*.
-3.  **Propose Alternatives**: I never just say "No". I offer options: *"If we can't do the full refactor now, can we add a tech debt ticket to do it next sprint?"*
+
+1. **Seek to Understand**: I first ask clarifying questions to understand their perspective. Often, managers see constraints (budget, timeline, business urgency) that I might not be aware of as an engineer.
+2. **Provide Data, Not Opinon**: instead of saying *"I don't like this approach,"* I say *"Using solution A increases our cloud costs by 20% compared to B. Is that trade-off acceptable for the speed gain?"*.
+3. **Propose Alternatives**: I never just say "No". I offer options: *"If we can't do the full refactor now, can we add a tech debt ticket to do it next sprint?"*
 
 ### Once a Decision is Made:
+
 If the manager decides against my recommendation (e.g., due to a strict deadline), I practice **"Disagree and Commit"**. I will support the decision fully and execute it to the best of my ability, ensuring we mitigate any risks I identified.
 
 # What is your proudest professional achievement?
@@ -402,13 +410,15 @@ Previously, if a product team wanted to create a new Kafka topic or S3 bucket, t
 
 **My Initiative:**
 I realized this bottleneck was crushing agility. I spent my "innovation time" building a **Self-Service CLI Tool & Portal**.
-*   It allowed developers to provision resources *instantly* (within 5 minutes).
-*   It automatically enforced **governance policies** (tags, retention limits, security controls) so DevOps didn't have to manually review every request.
+
+* It allowed developers to provision resources *instantly* (within 5 minutes).
+* It automatically enforced **governance policies** (tags, retention limits, security controls) so DevOps didn't have to manually review every request.
 
 **The Impact:**
-1.  **Velocity**: Provisioning time dropped from **3 days to 5 minutes**.
-2.  **Adoption**: It started as a tool for my team but was eventually **adopted by the entire engineering organization (15+ teams)**.
-3.  **Culture Shift**: It shifted the culture from "Gatekept Infrastructure" to "Developer Autonomy."
+
+1. **Velocity**: Provisioning time dropped from **3 days to 5 minutes**.
+2. **Adoption**: It started as a tool for my team but was eventually **adopted by the entire engineering organization (15+ teams)**.
+3. **Culture Shift**: It shifted the culture from "Gatekept Infrastructure" to "Developer Autonomy."
 
 I am proud of this because it wasn't an assigned task—I saw a pain point, built a solution, and it ended up improving the daily lives of every developer in the company.
 
@@ -417,10 +427,11 @@ I am proud of this because it wasn't an assigned task—I saw a pain point, buil
 I stay organized by **reducing cognitive load**. I don't try to keep everything in my head; I use a system to track it for me.
 
 ### My Organizing System:
-1.  **Centralized "Brain Dump"**: I use a personal task manager (like Todoist or Obsidian) alongside Jira. Every request—whether it's a Slack message or a meeting action item—goes immediately into this list so I don't forget it.
-2.  **The "Rule of 3"**: at the start of each day, I look at my long list and pick just **3 key outcomes** I must achieve. This keeps me focused on progress, not just "busy work."
-3.  **Context Switching Notes**: Before I switch tasks (e.g., for a meeting), I write a quick "Where I left off" note in the code or ticket. This allows me to resume deep work instantly when I return, saving the 15 minutes usually lost to re-orienting.
-4.  **End-of-Day Review**: I spend the last 10 minutes of my day updating status on tickets and planning the next day. This allows me to disconnect completely and start the next morning with clarity.
+
+1. **Centralized "Brain Dump"**: I use a personal task manager (like Todoist or Obsidian) alongside Jira. Every request—whether it's a Slack message or a meeting action item—goes immediately into this list so I don't forget it.
+2. **The "Rule of 3"**: at the start of each day, I look at my long list and pick just **3 key outcomes** I must achieve. This keeps me focused on progress, not just "busy work."
+3. **Context Switching Notes**: Before I switch tasks (e.g., for a meeting), I write a quick "Where I left off" note in the code or ticket. This allows me to resume deep work instantly when I return, saving the 15 minutes usually lost to re-orienting.
+4. **End-of-Day Review**: I spend the last 10 minutes of my day updating status on tickets and planning the next day. This allows me to disconnect completely and start the next morning with clarity.
 
 # Describe a time when you had to make a difficult decision?
 
@@ -429,17 +440,19 @@ We were two days away from launching a highly anticipated feature (Real-time Ord
 
 **The Conflict:**
 During final load testing, I discovered a race condition in the database layer that only triggered at very high concurrency. It wasn't crashing the system, but it had a 0.5% chance of showing incorrect data to users.
-*   **Easy Choice**: Launch on time, pray it doesn't happen often, and patch it later.
-*   **Hard Choice**: Delay the launch, upset the client and marketing team, but ensure data integrity.
+
+* **Easy Choice**: Launch on time, pray it doesn't happen often, and patch it later.
+* **Hard Choice**: Delay the launch, upset the client and marketing team, but ensure data integrity.
 
 **The Decision:**
 I made the decision to **recommend a "No-Go" for the launch**. I believed that *trust* was our most valuable asset, and showing incorrect financial data—even to 0.5% of users—would destroy that trust permanently.
 
 **My Action:**
 I called an emergency meeting with the Product Manager and VP. I didn't just bring bad news; I brought a plan.
-1.  **The Fix**: I explained exactly what the fix was (changing isolation levels and adding a lock).
-2.  **The Timeline**: I committed to a fix + regression test within 4 days.
-3.  **The Mitigation**: I proposed a "Beta Launch" to 5% of internal users so Marketing could still claim "It's Live!" while we fixed the bug for the public rollout.
+
+1. **The Fix**: I explained exactly what the fix was (changing isolation levels and adding a lock).
+2. **The Timeline**: I committed to a fix + regression test within 4 days.
+3. **The Mitigation**: I proposed a "Beta Launch" to 5% of internal users so Marketing could still claim "It's Live!" while we fixed the bug for the public rollout.
 
 **The Result:**
 The stakeholders agreed. We delayed the full public rollout by 4 days. When we did go live, the system was rock-solid. The client later thanked us for prioritizing quality over speed when I explained the potential risk we avoided. It reinforced that **my job isn't just to ship code, but to protect the business**.
@@ -449,16 +462,18 @@ The stakeholders agreed. We delayed the full public rollout by 4 days. When we d
 I address underperformance with **empathy first, then clarity**. My goal is to help them succeed, not to punish them.
 
 ### My Approach:
-1.  **Diagnose the Root Cause (The "Why")**: I schedule a private conversation to understand *why*. Is it a skill gap? A personal issue? Or lack of motivation?
-    *   *If Skill Gap*: I pair them with a senior mentor or provide specific training resources.
-    *   *If Personal*: I offer flexibility (like reduced workload for a week).
-    *   *If Motivation*: I try to assign them a project that aligns better with their interests.
-2.  **Set Clear Expectations (PIP Lite)**: I define a short-term, measurable goal.
-    *   *Bad Goal*: "Code faster."
-    *   *Good Goal*: "Deliver the Notification Module API endpoints by next Friday with 90% unit test coverage."
-3.  **Regular Check-ins**: Instead of waiting for the sprint review, I do quick daily check-ins to unblock them immediately.
+
+1. **Diagnose the Root Cause (The "Why")**: I schedule a private conversation to understand *why*. Is it a skill gap? A personal issue? Or lack of motivation?
+   * *If Skill Gap*: I pair them with a senior mentor or provide specific training resources.
+   * *If Personal*: I offer flexibility (like reduced workload for a week).
+   * *If Motivation*: I try to assign them a project that aligns better with their interests.
+2. **Set Clear Expectations (PIP Lite)**: I define a short-term, measurable goal.
+   * *Bad Goal*: "Code faster."
+   * *Good Goal*: "Deliver the Notification Module API endpoints by next Friday with 90% unit test coverage."
+3. **Regular Check-ins**: Instead of waiting for the sprint review, I do quick daily check-ins to unblock them immediately.
 
 ### The Tough Decision:
+
 If performance doesn't improve after consistent support and clear feedback, I have the difficult conversation about whether this role is the right fit for them, and involve HR if necessary. However, I ensure there are **no surprises**—they will know exactly where they stand at every step.
 
 # How do you adapt to changes in the workplace?
@@ -466,11 +481,14 @@ If performance doesn't improve after consistent support and clear feedback, I ha
 In the tech industry, **adaptability is a survival skill**. Whether it's a reorg, a new CTO, or a shift in technology, I embrace change by focusing on the **opportunity** rather than the disruption.
 
 ### My Approach to Change:
-1.  **Seek the "Why"**: I don't blindly follow; I ask leadership to explain the business driver. If I understand that we are moving to Kubernetes to save costs, I can support the transition more effectively.
-2.  **Be an Early Adopter**: instead of resisting, I volunteer to pilot the new process. This gives me a chance to influence how it's implemented.
-3.  **Support the Team**: Change creates anxiety. I try to be the steady hand, sharing what I've learned and creating documentation to make the transition easier for my peers.
+
+1. **Seek the "Why"**: I don't blindly follow; I ask leadership to explain the business driver. If I understand that we are moving to Kubernetes to save costs, I can support the transition more effectively.
+2. **Be an Early Adopter**: instead of resisting, I volunteer to pilot the new process. This gives me a chance to influence how it's implemented.
+3. **Support the Team**: Change creates anxiety. I try to be the steady hand, sharing what I've learned and creating documentation to make the transition easier for my peers.
 
 ### Example:
+
 At my last job, management decided to switch our Agile process from **Scrum to Kanban** overnight. The team was confused and resistant.
-*   **My Action**: I read up on Kanban best practices, set up the new Jira board configurations myself to demonstrate how it would work, and walked the team through the benefits (no more sprint planning meetings!).
-*   **Result**: The team realized it actually freed up more coding time, and within 2 weeks, we were shipping faster than before.
+
+* **My Action**: I read up on Kanban best practices, set up the new Jira board configurations myself to demonstrate how it would work, and walked the team through the benefits (no more sprint planning meetings!).
+* **Result**: The team realized it actually freed up more coding time, and within 2 weeks, we were shipping faster than before.
