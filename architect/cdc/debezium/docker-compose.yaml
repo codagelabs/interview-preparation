@@ -1,0 +1,143 @@
+services:
+
+  # ──────────────────────────────────────────────
+  # PostgreSQL (source database with WAL enabled)
+  # ──────────────────────────────────────────────
+  postgres:
+    image: quay.io/debezium/example-postgres:2.5
+    container_name: debezium-postgres
+    ports:
+      - "5433:5432"          # host:5433 → container:5432 (avoids conflict with local PG)
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventory
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d inventory"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ──────────────────────────────────────────────
+  # Zookeeper (Kafka coordination)
+  # ──────────────────────────────────────────────
+  zookeeper:
+    image: quay.io/debezium/zookeeper:2.5
+    container_name: debezium-zookeeper
+    ports:
+      - "2181:2181"
+    # No named volume — ephemeral by design.
+    # Zookeeper and Kafka must always start fresh together so their
+    # cluster IDs match. Persisting only one causes InconsistentClusterIdException.
+    healthcheck:
+      test: ["CMD-SHELL", "/zookeeper/bin/zkServer.sh status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  # ──────────────────────────────────────────────
+  # Kafka broker
+  # ──────────────────────────────────────────────
+  kafka:
+    image: quay.io/debezium/kafka:2.5
+    container_name: debezium-kafka
+    ports:
+      - "9092:9092"          # internal Docker network
+      - "29092:29092"        # host machine access
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    environment:
+      ZOOKEEPER_CONNECT: zookeeper:2181
+      # Dual-listener setup:
+      #   PLAINTEXT     → used by services inside Docker (connect, kafka-ui)
+      #   PLAINTEXT_HOST→ used by clients on the host machine (localhost:29092)
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+    # No named volume — ephemeral by design (see Zookeeper note above).
+    healthcheck:
+      test: ["CMD-SHELL", "/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  # ──────────────────────────────────────────────
+  # Debezium Kafka Connect
+  # ──────────────────────────────────────────────
+  connect:
+    image: quay.io/debezium/connect:2.5
+    container_name: debezium-connect
+    ports:
+      - "8083:8083"
+    depends_on:
+      kafka:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: debezium-connect-group
+      CONFIG_STORAGE_TOPIC: debezium_connect_configs
+      OFFSET_STORAGE_TOPIC: debezium_connect_offsets
+      STATUS_STORAGE_TOPIC: debezium_connect_statuses
+      CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      STATUS_STORAGE_REPLICATION_FACTOR: 1
+      # Enable the REST API to show connector plugins
+      CONNECT_REST_ADVERTISED_HOST_NAME: connect
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8083/connectors || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    restart: unless-stopped
+
+  # ──────────────────────────────────────────────
+  # Kafka UI  (visual monitoring at localhost:8080)
+  # ──────────────────────────────────────────────
+  kafka-ui:
+    image: ghcr.io/kafbat/kafka-ui:latest
+    container_name: debezium-kafka-ui
+    ports:
+      - "8090:8080"
+    depends_on:
+      kafka:
+        condition: service_healthy
+      connect:
+        condition: service_healthy
+    environment:
+      KAFKA_CLUSTERS_0_NAME: debezium-cluster
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME: debezium-connect
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: http://connect:8083
+    restart: unless-stopped
+
+  # ──────────────────────────────────────────────
+  # Setup Container (Registers Connector & Exits)
+  # ──────────────────────────────────────────────
+  connector-setup:
+    image: quay.io/debezium/connect:2.5
+    container_name: debezium-connector-setup
+    depends_on:
+      connect:
+        condition: service_healthy
+    volumes:
+      - ./connectors/register-postgres.json:/register-postgres.json:ro
+      - ./scripts/init-connector.sh:/init-connector.sh:ro
+    command: ["/init-connector.sh"]
+
+volumes:
+  postgres_data:   # Only Postgres data is persisted across restarts
