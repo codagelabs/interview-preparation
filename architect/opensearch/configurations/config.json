@@ -1,0 +1,13 @@
+{
+  "env": "DEV",
+  "logger_config": {
+    "log_level": ""
+  },
+  "elastic_search_config": {
+    "elastic_search_host": "localhost",
+    "elastic_search_port": "9200"
+  },
+  "bulk_indexer_config":{
+    "batch_size": 255
+}
+}
